@@ -12,7 +12,7 @@ data:
         url: http://35.225.108.17:8080/
       clouds:
         - kubernetes:
-            name: "advanced-k8s-config"
+            name: "kubernetes"
             serverUrl: "https://35.232.0.93"
             skipTlsVerify: true
             namespace: "default"
