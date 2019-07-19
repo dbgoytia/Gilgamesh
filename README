@@ -1,0 +1,1 @@
+Test DevOps tools installation using a Kubernetes cluster (Provisionally Minikube), a Helm Release for service specification, a PodSpec for balancing across the cluster, and Ansible for configuration of the cluster.

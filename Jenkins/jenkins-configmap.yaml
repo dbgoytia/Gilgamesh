@@ -1,0 +1,46 @@
+# A Kubernetes ConfigMap providing the configuration-as-code
+# default config for Kubernetes plugin and an example job
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jenkins-configmap
+data:
+  configuration-as-code.yaml: |
+    jenkins:
+      location:
+        url: http://35.225.108.17:8080/
+      clouds:
+        - kubernetes:
+            name: "advanced-k8s-config"
+            serverUrl: "https://35.232.0.93"
+            skipTlsVerify: true
+            namespace: "default"
+            jenkinsUrl: "http://35.225.108.17:8080/"
+            connectTimeout: 0
+            readTimeout: 0
+            containerCapStr: 100
+            maxRequestsPerHostStr: 64
+            retentionTimeout: 5
+            templates:
+              - name: "jenkins-slave"
+                namespace: "default"
+                label: "jenkins-slave"
+                nodeUsageMode: EXCLUSIVE
+                containers:
+                  - name: "jenkins-slave"
+                    image: "jenkinsci/jnlp-slave:latest"
+                    alwaysPullImage: true
+                    workingDir: "/home/jenkins"
+                    ttyEnabled: true
+                    resourceRequestCpu: "500m"
+                    resourceLimitCpu: "1000m"
+                    resourceRequestMemory: "1Gi"
+                    resourceLimitMemory: "2Gi"
+                volumes:
+                  - emptyDirVolume:
+                      memory: false
+                      mountPath: "/tmp"
+                idleMinutes: "1"
+                activeDeadlineSeconds: "120"
+                slaveConnectTimeout: "1000"
