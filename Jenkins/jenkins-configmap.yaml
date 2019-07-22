@@ -9,7 +9,6 @@ data:
       clouds:
         - kubernetes:
             name: "kubernetes"
-            namespace: "default"
             connectTimeout: 5
             readTimeout: 15
             maxRequestsPerHostStr: 32
