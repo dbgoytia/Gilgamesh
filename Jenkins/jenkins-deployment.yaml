@@ -11,18 +11,26 @@ spec:
     spec:
       containers:
         - name: jenkins
-          image: diegogoytia/jenkins-master:latest
+          image: diegogoytia/jenkins-master:1.1
           env:
+
+            - name: CASC_JENKINS_CONFIG
+              value: /var/jenkins_config/configuration-as-code.yaml
+
             - name: JAVA_OPTS
               value: -Djenkins.install.runSetupWizard=false
+
           ports:
             - name: http
               containerPort: 8080
             - name: agent
               containerPort: 50000
+
           volumeMounts:
-            - name: jenkins-home
-              mountPath: /var/jenkins_home
+            - name: jenkins-configuration-as-code
+              mountPath: /var/jenkins_config
+
       volumes:
-        - name: jenkins-home
-          emptyDir: {}
+        - name: jenkins-configuration-as-code
+          configMap:
+            name: jenkins-configuration-as-code
