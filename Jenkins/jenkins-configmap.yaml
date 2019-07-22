@@ -12,7 +12,6 @@ data:
             namespace: "default"
             connectTimeout: 5
             readTimeout: 15
-            concurrencyLimit: 10
             maxRequestsPerHostStr: 32
             containerCapStr: 600
             templates:
