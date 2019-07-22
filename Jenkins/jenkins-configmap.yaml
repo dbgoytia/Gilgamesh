@@ -13,7 +13,7 @@ data:
             connectTimeout: 5
             readTimeout: 15
             maxRequestsPerHostStr: 32
-            containerCapStr: 600
+            containerCapStr: 10
             templates:
               - name: "jenkins-slave"
                 label: "jenkins-slave"
