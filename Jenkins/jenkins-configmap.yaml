@@ -14,6 +14,7 @@ data:
             readTimeout: 15
             concurrencyLimit: 10
             maxRequestsPerHostStr: 32
+            containerCapStr: 600
             templates:
               - name: "jenkins-slave"
                 label: "jenkins-slave"
