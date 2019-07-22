@@ -17,7 +17,7 @@ data:
             templates:
               - name: "jenkins-slave"
                 label: "jenkins-slave"
-                nodeUsageMode: EXCLUSIVE
+                nodeUsageMode: NORMAL
                 containers:
                     - name: "jenkins-slave"
                       image: "jenkinsci/jnlp-slave"
