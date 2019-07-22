@@ -10,9 +10,15 @@ data:
         - kubernetes:
             name: "kubernetes"
             namespace: "default"
+            connectTimeout: 5
+            readTimeout: 15
+            concurrencyLimit: 10
+            maxRequestsPerHostStr: 32
             templates:
               - name: "jenkins-slave"
                 label: "jenkins-slave"
                 containers:
                     - name: "jenkins-slave"
                       image: "jenkinsci/jnlp-slave"
+                      workingDir: "/home/jenkins"
+                      ttyEnabled: true
