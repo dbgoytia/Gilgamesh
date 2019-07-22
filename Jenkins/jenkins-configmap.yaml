@@ -10,7 +10,6 @@ data:
         - kubernetes:
             name: "kubernetes"
             namespace: "default"
-            jenkinsUrl: "http://jenkins/"
             templates:
               - name: "jenkins-slave"
                 label: "jenkins-slave"
